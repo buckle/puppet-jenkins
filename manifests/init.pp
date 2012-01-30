@@ -5,5 +5,6 @@ class jenkins {
   include jenkins::firewall
 
   Class["jenkins::repo"] -> Class["jenkins::package"] -> Class["jenkins::service"]
+
 }
 
