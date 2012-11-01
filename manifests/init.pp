@@ -10,7 +10,7 @@ class jenkins (
   $handler_max        = $jenkins::params::handler_max,
   $handler_idle       = $jenkins::params::handler_idle,
   $args               = $jenkins::params::args
-) {
+) inherits jenkins::params {
   include jenkins::repo
   include jenkins::package
   include jenkins::service
