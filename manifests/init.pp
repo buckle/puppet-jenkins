@@ -1,4 +1,4 @@
-class jenkins (
+class jenkins(
   $home               = $jenkins::params::home,
   $java_cmd           = $jenkins::params::java_cmd,
   $user               = $jenkins::params::user,
