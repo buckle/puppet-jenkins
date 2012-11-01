@@ -1,4 +1,4 @@
 class jenkins::git {
-  jenkins::plugin { "git" : }
+  jenkins::plugin::install { "git" : }
 }
 
