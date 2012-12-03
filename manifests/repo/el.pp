@@ -11,9 +11,9 @@ class jenkins::repo::el {
     content => template("${module_name}/jenkins-ci.org.key"),
   }
   exec { 'rpm --import /etc/yum/jenkins-ci.org.key':
-    path    => "/bin:/usr/bin",
+    path    => '/bin:/usr/bin',
     require => File['/etc/yum/jenkins-ci.org.key'],
-    unless  => "rpm -q gpg-pubkey-d50582e6-4a3feef6",
+    unless  => 'rpm -q gpg-pubkey-d50582e6-4a3feef6',
   }
 }
 

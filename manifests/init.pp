@@ -14,7 +14,7 @@ class jenkins(
   include jenkins::repo
   include jenkins::package
   include jenkins::service
-  
+
   class { 'jenkins::config':
     home               => $home,
     java_cmd           => $java_cmd,
@@ -29,7 +29,7 @@ class jenkins(
     args               => $args
   }
 
-  Class["jenkins::repo"] -> Class["jenkins::package"] -> 
-  Class["jenkins::config"] -> Class["jenkins::service"]
+  Class['jenkins::repo'] -> Class['jenkins::package'] ->
+  Class['jenkins::config'] -> Class['jenkins::service']
 }
 # vim: ts=2 et sw=2 autoindent
