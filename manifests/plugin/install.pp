@@ -19,12 +19,12 @@ define jenkins::plugin::install($version=0) {
     }
   }
 
-  if (!defined(User["jenkins"])) {
-    user {
-      "jenkins" :
-        ensure => present;
-    }
-  }
+#  if (!defined(User["jenkins"])) {
+#    user {
+#      "jenkins" :
+#        ensure => present;
+#    }
+#  }
 
   exec {
     "download-${name}" :
