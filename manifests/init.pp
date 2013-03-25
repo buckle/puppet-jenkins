@@ -11,7 +11,7 @@ class jenkins(
   $handler_idle       = $jenkins::params::handler_idle,
   $args               = $jenkins::params::args
 ) inherits jenkins::params {
-  include jenkins::repo
+  #include jenkins::repo
   include jenkins::package
   include jenkins::service
 
@@ -29,7 +29,8 @@ class jenkins(
     args               => $args
   }
 
-  Class['jenkins::repo'] -> Class['jenkins::package'] ->
+  #Class['jenkins::repo'] ->
+  Class['jenkins::package'] ->
   Class['jenkins::config'] -> Class['jenkins::service']
 }
 # vim: ts=2 et sw=2 autoindent
