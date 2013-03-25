@@ -23,11 +23,9 @@ class jenkins::config (
     content       => template('jenkins/jenkins.erb')
   }
 
-  file { '/etc/init.d/jenkins':
-    owner         => 'root',
-    group         => 'root',
-    mode          => '0755',
-    content       => template('jenkins/jenkins.init.erb'),
+  file { '/usr/lib/jenkins':
+    owner         => 'jenkins',
+    group         => 'jenkins',
   }
 }
 
