@@ -11,19 +11,25 @@ class jenkins::config (
   $handler_idle       = $jenkins::params::handler_idle,
   $args               = $jenkins::params::args
 ) inherits jenkins::params {
-  file { 'jenkins configuration file':
+  file { "jenkins configuration file":
     owner         => root,
     group         => root,
     mode          => 600,
-    path          => $::osfamily ? {
-      'RedHat'    => '/etc/sysconfig/jenkins',
-      'Debian'    => '/etc/default/jenkins',
-      default     => '/etc/default/jenkins',
+    path          => $osfamily ? {
+      'RedHat'    => "/etc/sysconfig/jenkins",
+      'Debian'    => "/etc/default/jenkins",
+      default     => "/etc/default/jenkins",
     },
-    content       => template('jenkins/jenkins.erb')
+    content       => template("jenkins/jenkins.erb")
   }
 
   file { '/usr/lib/jenkins':
+    owner         => 'jenkins',
+    group         => 'jenkins',
+  }
+
+  file { "${home}/tmp":
+    ensure        => 'directory',
     owner         => 'jenkins',
     group         => 'jenkins',
   }
