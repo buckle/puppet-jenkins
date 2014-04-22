@@ -22,4 +22,16 @@ class jenkins::config (
     },
     content       => template("jenkins/jenkins.erb")
   }
+
+  file { '/usr/lib/jenkins':
+    owner         => 'jenkins',
+    group         => 'jenkins',
+  }
+
+  file { "${home}/tmp":
+    ensure        => 'directory',
+    owner         => 'jenkins',
+    group         => 'jenkins',
+  }
 }
+
